@@ -104,6 +104,18 @@ template node['php-fpm']['conf_file'] do
   group "root"
 end
 
+template "#{node['php']['conf_dir']}/fpm/php.ini" do
+  source "php.ini.erb"
+  owner "root"
+  group "root"
+  mode "0644"
+  variables(
+    :directives => node['php-fpm']['directives'],
+    :error_reporting => node['php-fpm']['options']['error_reporting'],
+    :display_errors => node['php-fpm']['options']['display_errors']
+  )
+end
+
 node['php-fpm']['pools'].each do |pool|
   fpm_pool pool do
     php_fpm_service_name php_fpm_service_name
