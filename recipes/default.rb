@@ -105,13 +105,15 @@ template node['php-fpm']['conf_file'] do
 end
 
 template "/etc/php5/fpm/php.ini" do
+  cookbook "php"
   source "php.ini.erb"
   owner "root"
   group "root"
   mode "0644"
   variables(
     :error_reporting => node['php-fpm']['options']['error_reporting'],
-    :display_errors => node['php-fpm']['options']['display_errors']
+    :display_errors => node['php-fpm']['options']['display_errors'],
+    :directives => node['php-fpm']['directives']
   )
 end
 
