@@ -16,6 +16,7 @@ end
 
 default['php-fpm']['options']['error_reporting'] = 'E_ALL & ~E_NOTICE'
 default['php-fpm']['options']['display_errors'] = 'Off'
+default['php-fpm']['options']['date_timezone'] = 'Europe/London'
 default['php-fpm']['directives'] = {}
 
 default['php-fpm']['conf_dir'] = conf_dir
