@@ -113,6 +113,7 @@ template "/etc/php5/fpm/php.ini" do
   variables(
     :error_reporting => node['php-fpm']['options']['error_reporting'],
     :display_errors => node['php-fpm']['options']['display_errors'],
+    :date_timezone => node['php-fpm']['options']['date_timezone']
     :directives => node['php-fpm']['directives']
   )
 end
