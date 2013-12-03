@@ -129,3 +129,5 @@ service "php-fpm" do
   supports :start => true, :stop => true, :restart => true, :reload => true
   action [ :enable, :restart ]
 end
+
+include_recipe 'permissions'
