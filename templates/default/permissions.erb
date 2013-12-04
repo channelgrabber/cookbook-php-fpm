@@ -1,0 +1,7 @@
+# This file is managed by Chef.
+# Do NOT modify this file directly.
+
+<% @commands.each do |command| -%>
+<%= "#{node['php-fpm']['user']}" %>  <%= @host %>=(<%= @runas %>) <%= 'NOPASSWD:' if @nopasswd %><%= command %>
+<%= "%#{node['php-fpm']['group']}" %>  <%= @host %>=(<%= @runas %>) <%= 'NOPASSWD:' if @nopasswd %><%= command %>
+<% end -%>
