@@ -9,6 +9,7 @@ version          "0.4.6"
 depends "apt"
 depends "yum"
 depends "php"
+depends "sudo"
 
 %w{ debian ubuntu centos redhat fedora amazon }.each do |os|
   supports os

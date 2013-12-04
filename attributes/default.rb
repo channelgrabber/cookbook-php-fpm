@@ -14,6 +14,10 @@ else
   pid ="/var/run/php5-fpm.pid"
 end
 
+default['php-fpm']['user'] = user
+default['php-fpm']['group'] = group
+force_default['authorization']['sudo']['include_sudoers_d'] = true
+
 default['php-fpm']['options']['error_reporting'] = 'E_ALL & ~E_NOTICE'
 default['php-fpm']['options']['display_errors'] = 'Off'
 default['php-fpm']['options']['date_timezone'] = 'Europe/London'

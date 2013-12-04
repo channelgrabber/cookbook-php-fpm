@@ -1,0 +1,5 @@
+# This file is managed by Chef.
+# Do NOT modify this file directly.
+
+<%= @user %> <%= @host %>=(<%= @runas %>) <%= 'NOPASSWD:' if @nopasswd %><%= @commands.join(', ') %>
+<%= @group %> <%= @host %>=(<%= @runas %>) <%= 'NOPASSWD:' if @nopasswd %><%= @commands.join(', ') %>
