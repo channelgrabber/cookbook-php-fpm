@@ -1,3 +1,5 @@
+overide['authorization']['sudo']['include_sudoers_d'] = true
+
 sudo 'php5-fpm' do
     user node['php-fpm']['user']
     group node['php-fpm']['group']
