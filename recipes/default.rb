@@ -93,6 +93,13 @@ else
   php_fpm_service_name = "php5-fpm"
 end
 
+directory "/var/run/php-fpm" do
+  owner 'root'
+  group 'root'
+  mode '0644'
+  action :create
+end
+
 package php_fpm_service_name do
   action :upgrade
 end
