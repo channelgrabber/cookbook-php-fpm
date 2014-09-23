@@ -46,9 +46,8 @@ define :fpm_pool, :template => "pool.conf.erb", :enable => true do
     :min_spare_servers => node['php-fpm']['pool'][pool_name]['min_spare_servers'],
     :max_spare_servers => node['php-fpm']['pool'][pool_name]['max_spare_servers'],
     :max_requests => node['php-fpm']['pool'][pool_name]['max_requests'],
-    :status_path => node['php-fpm']['pool'][pool_name]['status_path'],
+    :status_path => node['php-fpm']['pool'][pool_name]['status_path']
     :params => params,
-    :pid => node['php-fpm']['pool'][pool_name]['listen']
     )
   end
 end
