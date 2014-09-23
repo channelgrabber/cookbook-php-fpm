@@ -14,6 +14,8 @@ else
   pid ="/var/run/php5-fpm.pid"
 end
 
+pool_dir = "/var/run/php-fpm/"
+
 default['php-fpm']['user'] = user
 default['php-fpm']['group'] = group
 force_default['authorization']['sudo']['include_sudoers_d'] = true
@@ -29,7 +31,9 @@ default['php-fpm']['pid'] = pid
 default['php-fpm']['error_log'] =  error_log
 default['php-fpm']['log_level'] = "notice"
 
-default['php-fpm']['pool']['default_pool']['listen'] = "/var/run/php-fpm/$pool.sock"
+default["php-fpm"]["pool_dir"] = pool_dir
+
+default['php-fpm']['pool']['default_pool']['listen'] = "#{pool_dir}$pool.sock"
 default['php-fpm']['pool']['default_pool']['allowed_clients'] = "all"
 default['php-fpm']['pool']['default_pool']['user'] = user
 default['php-fpm']['pool']['default_pool']['group'] = group
