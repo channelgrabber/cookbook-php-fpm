@@ -135,7 +135,11 @@ node['configure_sites']['sites'].each do |siteName, site|
   if(!site.has_key?('enabled') || !site.enabled)
     next
   end
-  
+  if !node['php-fpm']['pool'].has_key?(siteName)
+    puts "#"*50
+    puts siteName
+    puts "#"*50
+  end
   fpm_pool siteName do 
     php_fpm_service_name php_fpm_service_name
   end
