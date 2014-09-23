@@ -29,7 +29,7 @@ default['php-fpm']['pid'] = pid
 default['php-fpm']['error_log'] =  error_log
 default['php-fpm']['log_level'] = "notice"
 
-default['php-fpm']['pools'] = ["www","testpool"]
+#default['php-fpm']['pools'] = ["www","testpool"]
 
 default['php-fpm']['pool']['www']['listen'] = "/var/run/php-fpm-www.sock"
 default['php-fpm']['pool']['www']['allowed_clients'] = ["127.0.0.1"]
