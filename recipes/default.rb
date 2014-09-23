@@ -132,7 +132,7 @@ end
 # end
 
 node['configure_sites']['sites'].each do |site|
-  if !node['php-fpm']['pools'].has_key?(site)
+  if !node['php-fpm'].has_key?('pool')
     puts '#'*50
     puts site 
   end
