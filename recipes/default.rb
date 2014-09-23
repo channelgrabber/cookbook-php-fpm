@@ -131,12 +131,12 @@ end
 #   end
 # end
 
-node['configure_sites']['sites'].each do |site|
+node['configure_sites']['sites'].each do |siteName, site|
   if(!site.has_key?('enabled') || !site.enabled)
     next
   end
   
-  fpm_pool site do 
+  fpm_pool siteName do 
     php_fpm_service_name php_fpm_service_name
   end
 end
