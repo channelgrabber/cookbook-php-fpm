@@ -28,8 +28,8 @@ define :fpm_pool, :template => "pool.conf.erb", :enable => true do
   template conf_file do
     only_if "test -d #{node['php-fpm']['conf_dir']}/pool.d || mkdir -p #{node['php-fpm']['conf_dir']}/pool.d"
     source params[:template]
-    owner "root"
-    group "root"
+    owner "www-data"
+    group "www-data"
     mode 00644
     if params[:cookbook]
       cookbook params[:cookbook]
