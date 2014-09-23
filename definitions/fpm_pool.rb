@@ -26,7 +26,7 @@ define :fpm_pool, :template => "pool.conf.erb", :enable => true do
   conf_file = "#{node['php-fpm']['conf_dir']}/pools/#{pool_name}.conf"
   # /etc/php5/fpm/pool.d/www.conf
   template conf_file do
-    only_if "test -d #{node['php-fpm']['conf_dir']}/pools || mkdir -p #{node['php-fpm']['conf_dir']}/pools"
+    only_if "test -d #{node['php-fpm']['conf_dir']}/pool.d || mkdir -p #{node['php-fpm']['conf_dir']}/pool.d"
     source params[:template]
     owner "root"
     group "root"
