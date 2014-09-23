@@ -135,6 +135,8 @@ node['configure_sites']['sites'].each do |site|
   if !node['php-fpm']['pool'].has_key?(site)
     puts '#'*50
     puts site 
+    puts "\n";
+    puts '#'*50
   end
   fpm_pool site do 
     php_fpm_service_name php_fpm_service_name
