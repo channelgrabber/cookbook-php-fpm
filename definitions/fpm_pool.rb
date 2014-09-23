@@ -28,8 +28,8 @@ define :fpm_pool, :template => "pool.conf.erb", :enable => true do
   template conf_file do
     only_if "test -d #{node['php-fpm']['conf_dir']}/pool.d || mkdir -p #{node['php-fpm']['conf_dir']}/pool.d"
     source params[:template]
-    owner "www-data"
-    group "www-data"
+    owner "root"
+    group "root"
     mode 00644
     if params[:cookbook]
       cookbook params[:cookbook]
@@ -47,7 +47,7 @@ define :fpm_pool, :template => "pool.conf.erb", :enable => true do
     :max_spare_servers => node['php-fpm']['pool'][pool_name]['max_spare_servers'],
     :max_requests => node['php-fpm']['pool'][pool_name]['max_requests'],
     :status_path => node['php-fpm']['pool'][pool_name]['status_path'],
-    :params => params,
+    :params => params
     )
   end
 end
