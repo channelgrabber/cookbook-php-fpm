@@ -125,8 +125,14 @@ template "/etc/php5/fpm/php.ini" do
   )
 end
 
-node['php-fpm']['pools'].each do |pool|
-  fpm_pool pool do
+# node['php-fpm']['pools'].each do |pool|
+#   fpm_pool pool do
+#     php_fpm_service_name php_fpm_service_name
+#   end
+# end
+
+node['configure_sites']['sites'].each do |site|
+  fpm_pool site do 
     php_fpm_service_name php_fpm_service_name
   end
 end
