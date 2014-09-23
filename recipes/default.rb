@@ -94,9 +94,9 @@ else
 end
 
 directory "/var/run/php-fpm" do
-  owner 'root'
-  group 'root'
-  mode '0644'
+  owner 'www-data'
+  group 'www-data'
+  mode '0775'
   action :create
 end
 
