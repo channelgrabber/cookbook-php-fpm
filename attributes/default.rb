@@ -34,7 +34,7 @@ default['php-fpm']['log_level'] = "notice"
 default["php-fpm"]["pool_dir"] = pool_dir
 
 default['php-fpm']['pool']['default_pool']['listen'] = "#{pool_dir}$pool.sock"
-default['php-fpm']['pool']['default_pool']['allowed_clients'] = "all"
+default['php-fpm']['pool']['default_pool']['allowed_clients'] = "[127.0.0.1]"
 default['php-fpm']['pool']['default_pool']['user'] = user
 default['php-fpm']['pool']['default_pool']['group'] = group
 default['php-fpm']['pool']['default_pool']['process_manager'] = "dynamic"
