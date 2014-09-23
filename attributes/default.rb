@@ -41,6 +41,6 @@ default['php-fpm']['pool']['default_pool']['process_manager'] = "dynamic"
 default['php-fpm']['pool']['default_pool']['max_children'] = 5
 default['php-fpm']['pool']['default_pool']['start_servers'] = 2
 default['php-fpm']['pool']['default_pool']['min_spare_servers'] = 1
-default['php-fpm']['pool']['default_pool']['max_spare_servers'] = 1
+default['php-fpm']['pool']['default_pool']['max_spare_servers'] = 2
 default['php-fpm']['pool']['default_pool']['max_requests'] = 200
 default['php-fpm']['pool']['default_pool']['status_path'] = '/fpmstatus/$pool'
