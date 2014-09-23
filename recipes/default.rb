@@ -129,7 +129,7 @@ node['configure_sites']['sites'].each do |siteName, site|
   if(!site.has_key?('enabled') || !site.enabled)
     next
   end
-  node.set['php-fpm']['pool'][siteName] = node['php-fpm']['pool']['default_pool']
+  node.default['php-fpm']['pool'][siteName] = node['php-fpm']['pool']['default_pool']
   if !node['php-fpm']['pool'].has_key?(siteName)
     puts "#"*50
     puts siteName
