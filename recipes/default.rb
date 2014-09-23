@@ -125,16 +125,11 @@ template "/etc/php5/fpm/php.ini" do
   )
 end
 
-# node['php-fpm']['pools'].each do |pool|
-#   fpm_pool pool do
-#     php_fpm_service_name php_fpm_service_name
-#   end
-# end
-
 node['configure_sites']['sites'].each do |siteName, site|
   if(!site.has_key?('enabled') || !site.enabled)
     next
   end
+  node['php-fpm']['pool'][siteName] = node['php-fpm']['pool']['default_pool']
   if !node['php-fpm']['pool'].has_key?(siteName)
     puts "#"*50
     puts siteName

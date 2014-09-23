@@ -17,7 +17,7 @@ include=<%= "#{node['php-fpm']['conf_dir']}/pool.d/*.conf" %>
 [global]
 ; Pid file
 ; Default Value: none
-; pid = <%= node['php-fpm']['pid'] %>
+pid = <%= node['php-fpm']['pid'] %>
 
 ; Error log file
 ; Default Value: /var/log/php-fpm.log
