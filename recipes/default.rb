@@ -130,7 +130,16 @@ node['configure_sites']['sites'].each do |siteName, site|
     next
   end
   
-  node.default['php-fpm']['pool'][siteName] = node['php-fpm']['pool']['default_pool']
+  if node.default['php-fpm']['pool'].has_key?(siteName)
+    node['php-fpm']['pool']['default_pool'].each do |key, value|
+      if !node.default['php-fpm']['pool'][siteName].has_key?(key) 
+        node.default['php-fpm']['pool'][siteName][key] = value
+      end
+    end
+  else
+    node.default['php-fpm']['pool'][siteName] = node['php-fpm']['pool']['default_pool']
+  end
+
   fpm_pool siteName do 
     php_fpm_service_name php_fpm_service_name
   end
