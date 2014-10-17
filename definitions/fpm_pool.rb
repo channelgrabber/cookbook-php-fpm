@@ -23,10 +23,10 @@ define :fpm_pool, :template => "pool.conf.erb", :enable => true do
 
   include_recipe "php-fpm"
 
-  conf_file = "#{node['php-fpm']['conf_dir']}/pools/#{pool_name}.conf"
+  conf_file = "#{node['php-fpm']['conf_dir']}/pool.d/#{pool_name}.conf"
   # /etc/php5/fpm/pool.d/www.conf
   template conf_file do
-    only_if "test -d #{node['php-fpm']['conf_dir']}/pools || mkdir -p #{node['php-fpm']['conf_dir']}/pools"
+    only_if "test -d #{node['php-fpm']['conf_dir']}/pool.d || mkdir -p #{node['php-fpm']['conf_dir']}/pool.d"
     source params[:template]
     owner "root"
     group "root"
@@ -46,6 +46,7 @@ define :fpm_pool, :template => "pool.conf.erb", :enable => true do
     :min_spare_servers => node['php-fpm']['pool'][pool_name]['min_spare_servers'],
     :max_spare_servers => node['php-fpm']['pool'][pool_name]['max_spare_servers'],
     :max_requests => node['php-fpm']['pool'][pool_name]['max_requests'],
+    :status_path => node['php-fpm']['pool'][pool_name]['status_path'],
     :params => params
     )
   end

@@ -93,6 +93,13 @@ else
   php_fpm_service_name = "php5-fpm"
 end
 
+directory "/var/run/php-fpm" do
+  owner 'www-data'
+  group 'www-data'
+  mode '0775'
+  action :create
+end
+
 package php_fpm_service_name do
   action :upgrade
 end
@@ -118,8 +125,22 @@ template "/etc/php5/fpm/php.ini" do
   )
 end
 
-node['php-fpm']['pools'].each do |pool|
-  fpm_pool pool do
+node['configure_sites']['sites'].each do |siteName, site|
+  if(!site.has_key?('enabled') || !site.enabled)
+    next
+  end
+  
+  if node.default['php-fpm']['pool'].has_key?(siteName)
+    node['php-fpm']['pool']['default_pool'].each do |key, value|
+      if !node.default['php-fpm']['pool'][siteName].has_key?(key) 
+        node.default['php-fpm']['pool'][siteName][key] = value
+      end
+    end
+  else
+    node.default['php-fpm']['pool'][siteName] = node['php-fpm']['pool']['default_pool']
+  end
+
+  fpm_pool siteName do 
     php_fpm_service_name php_fpm_service_name
   end
 end
