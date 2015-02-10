@@ -101,7 +101,7 @@ directory "/var/run/php-fpm" do
 end
 
 package php_fpm_service_name do
-  options "--assume-no"
+  options "-o Dpkg::Options::=\"--force-confdef --force-confold\""
   action :upgrade
 end
 
