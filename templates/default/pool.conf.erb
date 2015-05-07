@@ -154,12 +154,20 @@ pm.status_path = <%= @status_path %>
 ; dumped to the 'slowlog' file. A value of '0s' means 'off'.
 ; Available units: s(econds)(default), m(inutes), h(ours), or d(ays)
 ; Default Value: 0
+<% if @request_slowlog_timeout %>
+request_slowlog_timeout = <%= @request_slowlog_timeout %>
+<% else %>
 ;request_slowlog_timeout = 0
+<% end %>
 
 ; The log file for slow requests
 ; Default Value: not set
 ; Note: slowlog is mandatory if request_slowlog_timeout is set
+<% if @slowlog %>
+slowlog = <%= @slowlog %>
+<% else %>
 ;slowlog = /var/log/php-fpm/www-slow.log
+<% end %>
 
 ; Set open file descriptor rlimit.
 ; Default Value: system defined value
@@ -185,7 +193,7 @@ pm.status_path = <%= @status_path %>
 ; Redirect worker stdout and stderr into main error log. If not set, stdout and
 ; stderr will be redirected to /dev/null according to FastCGI specs.
 ; Default Value: no
-;catch_workers_output = yes
+<%= ';' unless @catch_workers_output %>catch_workers_output = yes
 
 ; Limits the extensions of the main script FPM will allow to parse. This can
 ; prevent configuration mistakes on the web server side. You should only limit

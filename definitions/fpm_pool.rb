@@ -50,6 +50,9 @@ define :fpm_pool, :template => "pool.conf.erb", :enable => true do
     :max_spare_servers => node['php-fpm']['pool'][pool_name]['max_spare_servers'],
     :max_requests => node['php-fpm']['pool'][pool_name]['max_requests'],
     :status_path => node['php-fpm']['pool'][pool_name]['status_path'],
+    :request_slowlog_timeout => node['php-fpm']['pool'][pool_name]['request_slowlog_timeout'],
+    :slowlog => node['php-fpm']['pool'][pool_name]['slowlog'],
+    :catch_workers_output => node['php-fpm']['pool'][pool_name]['catch_workers_output'],
     :params => params
     )
   end
