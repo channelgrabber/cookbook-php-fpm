@@ -47,3 +47,4 @@ default['php-fpm']['pool']['default_pool']['min_spare_servers'] = 1
 default['php-fpm']['pool']['default_pool']['max_spare_servers'] = 2
 default['php-fpm']['pool']['default_pool']['max_requests'] = 200
 default['php-fpm']['pool']['default_pool']['status_path'] = '/fpmstatus/$pool'
+default['php-fpm']['pool']['default_pool']['ping_path'] = '/ping'
