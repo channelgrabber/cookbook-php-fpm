@@ -136,18 +136,18 @@ pm.status_path = <%= @status_path %>
 ;       anything, but it may not be a good idea to use the .php extension or it
 ;       may conflict with a real PHP file.
 ; Default Value: not set
-<% if @ping_path != '' %>
+<% if @ping_path %>
 ping.path = <%= @ping_path %>
-<% else $>
+<% else %>
 ;ping.path = /ping
 <% end %>
 
 ; This directive may be used to customize the response of a ping request. The
 ; response is formatted as text/plain with a 200 response code.
 ; Default Value: pong
-<% if @ping_response != '' %>
+<% if @ping_response %>
 ping.response = <%= @ping_response %>
-<% else $>
+<% else %>
 ;ping.response = pong
 <% end %>
 
